@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./../partial/settings %>
+  </head>
+  <body>
+
+    <style>
+
+        input:focus{
+            outline: none;
+        }
+
+    </style>
+
+    <% include ./../partial/header %>
+
+        <div class="container mt-32 mx-auto text-center w-10/12 sm:w-9/12 md:w-8/12 lg:w-1/2 xl:w-5/12">
+        
+            <form method="post" class="mx-auto">
+
+                <label for="title">제목</label>
+                <input type="text" name="title" id="title" class="w-3/4 my-2 border-2 border-gray-400 mx-5 px-5 py-2" value="<%= data.title %>">
+
+                <br>
+
+                <label for="content">내용</label>
+                <textarea name="content" id="content" class="w-3/4 h-64 my-2 border-2 border-gray-400 mx-5 px-5 py-2" style="resize: none; overflow-y: scroll;"><%= data.content %></textarea>
+
+                <button class="block mx-auto w-1/2 my-10 py-5 px-5 rounded-lg bg-blue-300">WRITE</button>
+
+            </form>
+        
+        </div>
+      
+    <% include ./../partial/footer %> 
+
+    <script>
+
+        document.addEventListener('submit', (ev) => {
+
+            const title = document.getElementById("title");
+            const content = document.getElementById("content");
+
+            if(title.value.length < 6 || content.value.length < 6){
+                ev.preventDefault();
+                alert("제목과 내용을 최소 6글자 이상입니다");
+            }
+           
+        });
+
+    </script>
+
+  </body>
+</html>

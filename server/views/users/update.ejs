@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./../partial/settings %>
+  </head>
+  <body>
+
+    <style>
+
+        input:focus{
+            outline: none;
+        }
+
+    </style>
+
+    <% include ./../partial/header %>
+
+        <div class="container mt-32 mx-auto text-center w-10/12 sm:w-9/12 md:w-8/12 lg:w-1/2 xl:w-5/12">
+
+            <h1 class="text-4xl text-blue-700 font-black">UPDATE PASSWORD</h1>
+        
+            <form method="post" class="mx-auto">
+
+                <input class="block mx-auto w-1/2 my-10 py-5 px-5 rounded-lg bg-gray-300" type="password" name="password" id="password" placeholder="비밀번호">
+
+                <input class="block mx-auto w-1/2 my-10 py-5 px-5 rounded-lg bg-gray-300" type="password" name="re_password" id="re_password" placeholder="비밀번호 확인">
+
+                <button class="block mx-auto w-1/2 my-10 py-5 px-5 rounded-lg bg-blue-300">UPDATE</button>
+
+            </form>
+        
+        </div>
+      
+    <% include ./../partial/footer %> 
+
+    <script>
+
+        document.addEventListener('submit', (ev) => {
+
+            const passwords = document.querySelectorAll("input");
+
+            if(passwords[0].value.length < 6){
+                ev.preventDefault();
+                alert("비밀번호는 최소 6글자입니다");
+            }else{
+
+                if(passwords[0].value != passwords[1].value){
+                    ev.preventDefault();
+                    alert("비밀번호가 서로 일치하지 않습니다!");
+                }
+
+            }
+
+        });
+
+    </script>
+
+  </body>
+</html>

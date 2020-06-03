@@ -1,0 +1,40 @@
+<header>
+
+    <div class="flex justify-between w-full h-20 bg-white border-b-2 border-gray-500" style="position: fixed; top: 0; left: 0; z-index: 99;">
+
+        <a href="/">
+            <div class="">
+                <!-- <i class="fas fa-users text-4xl hover:text-gray-800" style="line-height: 5rem;"></i> -->
+                <img class="h-20" src="/images/logo.png" alt="logo" id="mainlogo">
+            </div>
+        </a>
+
+        <div class="">
+            <div class="inline-flex text-center h-full mr-4">
+                <a href="/communities/list"><div class="flex-1 h-full w-20 px-2 bg-white hover:bg-gray-300 truncate" style="line-height: 5rem; cursor: pointer;">커뮤니티</div></a>
+                <% if(session.user){ %> 
+                <a href="/users/logout"><div class="flex-1 h-full w-20 px-2 bg-white hover:bg-gray-300 truncate" style="line-height: 5rem; cursor: pointer;">로그아웃</div></a>
+                <a href="/users/profile"><div class="flex-1 h-full w-20 px-2 bg-white hover:bg-gray-300 truncate" style="line-height: 5rem; cursor: pointer;"><%= session.user.name %></div></a>
+                <% }else{ %>
+                <a href="/users/login"><div class="flex-1 h-full w-20 px-2 bg-white hover:bg-gray-300 truncate" style="line-height: 5rem; cursor: pointer;">로그인</div></a>
+                <a href="/users/signup"><div class="flex-1 h-full w-20 px-2 bg-white hover:bg-gray-300 truncate" style="line-height: 5rem; cursor: pointer;">회원가입</div></a>
+                <% } %> 
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const logo = document.getElementById("mainlogo")
+        var degree = 0;
+        makeRotate = () => {
+          logo.style.transform = `rotate(${degree}deg)`
+          degree += 0.3;
+        }
+        init = () => {
+          makeRotate();
+          setInterval(makeRotate, 10);
+        }
+        init();
+      </script>
+</header>
